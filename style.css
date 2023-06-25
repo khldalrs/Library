@@ -1,0 +1,26 @@
+body {
+    background-color: bisque;
+}
+
+#form-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+#newbook {
+    border-style: none;
+    border: 10px;
+    border-radius: 10px;
+    background-color: burlywood;
+    width: 300px;
+    height: 50px;
+}
+
+#bookform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
