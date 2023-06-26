@@ -7,16 +7,36 @@ function book(title, author, pages, read) {
     this.read = read;
 };
 
+book.prototype.toggleRead = function() {
+  this.read = !this.read;
+};
+
+function toggleRead(index) {
+  mylibrary[index].toggleRead();
+  render();
+};
+
 function render() {
   let libraryel = document.querySelector("#library");
   libraryel.innerHTML = "";
   for (let i = 0; i < mylibrary.length; i++) {
     let book = mylibrary[i];
     let bookel = document.createElement("div");
-    bookel.innerHTML = book.title + " by " + book.author + ", " + book.pages + " pages, " + book.read;
+    bookel.innerHTML = 
+    `<div class="book-instant">
+      <h2>${book.title}</h2> <h4> by ${book.author}</h4> <br> ${book.pages} pages - ${book.read ? "Read" : "Not Read"}<br><br>
+      <button class="remove" onclick="removeBookFromLibrary(${i})">Remove</button> 
+      <button class="read" onclick="toggleRead(${i})">Toggle Read</button>
+    </div>`;
     libraryel.appendChild(bookel);
   }
 };
+
+
+function removeBookFromLibrary(index) {
+  mylibrary.splice(index, 1);
+  render();
+}
 
 function addBookToLibrary() {
   let title = document.getElementById("title").value;
